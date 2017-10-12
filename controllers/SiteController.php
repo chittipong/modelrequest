@@ -6,8 +6,8 @@ use Yii;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\Vehicledata;
-use app\models\VehicledataSearch;
+use app\models\Request;
+use app\models\RequestSearch;
 
 use app\models\SignupForm;
 use app\models\LoginForm;
@@ -123,14 +123,13 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $searchModel = new VehicledataSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+      $searchModel = new RequestSearch();
+      $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-            'name'=>'Chittipong',
-        ]);
+      return $this->render('index', [
+          'searchModel' => $searchModel,
+          'dataProvider' => $dataProvider,
+      ]);
     }
 
     /**
