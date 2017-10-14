@@ -123,6 +123,37 @@ class RequestController extends Controller
         }
     }
 
+    public function actionUpdateChecked()
+    {
+        $ridArr = explode(',', Yii::$app->request->post('refIds'));
+        $c=count($ridArr);
+        
+        if($c>0){
+            
+            foreach($ridArr as $rid){
+                $model = $this->findModel($rid);
+                $model->checked = 'Y';
+                $model->user_id = Yii::$app->user->identity->id;
+                $model->user_name = Yii::$app->user->identity->username;
+
+                $model->save();
+                echo $model->user_id;
+            }
+
+            echo "Update Sucessfully";
+        }else{
+            echo "You don't select anything";
+        }
+        /*if(Request::updateAll(['in','tableid',$rid])){
+        //if(Account::deleteAll(['in', 'id', $account_ids])){
+            Yii::$app->session->setFlash('success', 'ลบบัญชีเรียบร้อยแล้ว');
+            return $this->redirect(['index']);
+        }else{
+            Yii::$app->session->setFlash('error', 'เกิดข้อผิดพลาด');
+            return $this->redirect(['index']);
+        }*/
+    }//End***
+
     /**
      * Deletes an existing Request model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

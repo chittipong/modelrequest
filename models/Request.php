@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "request".
  *
- * @property string $tableid
+ * @property integer $tableid
  * @property integer $id
  * @property string $n_number_request
  * @property string $rd_status_app
@@ -18,6 +18,9 @@ use Yii;
  * @property integer $sync_cloud_status
  * @property string $sync_cloud_date
  * @property string $cloud_uuid
+ * @property string $checked
+ * @property integer $user_id
+ * @property string $user_name
  */
 class Request extends \yii\db\ActiveRecord
 {
@@ -35,10 +38,12 @@ class Request extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id'], 'required'],
-            [['id', 'sync_cloud_status'], 'integer'],
+            [['id', 'checked', 'user_id', 'user_name'], 'required'],
+            [['id', 'sync_cloud_status', 'user_id'], 'integer'],
             [['internation_receivedate', 'sync_cloud_date'], 'safe'],
             [['n_number_request', 'rd_status_app', 'rd_developin', 'internation_receive', 'internation_name', 'cloud_uuid'], 'string', 'max' => 250],
+            [['checked'], 'string', 'max' => 1],
+            [['user_name'], 'string', 'max' => 30],
         ];
     }
 
@@ -59,6 +64,9 @@ class Request extends \yii\db\ActiveRecord
             'sync_cloud_status' => Yii::t('app', 'Sync Cloud Status'),
             'sync_cloud_date' => Yii::t('app', 'Sync Cloud Date'),
             'cloud_uuid' => Yii::t('app', 'Cloud Uuid'),
+            'checked' => Yii::t('app', 'Checked'),
+            'user_id' => Yii::t('app', 'User ID'),
+            'user_name' => Yii::t('app', 'User Name'),
         ];
     }
 }

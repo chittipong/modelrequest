@@ -39,6 +39,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'sync_cloud_status',
             'sync_cloud_date',
             'cloud_uuid',
+            'checked',
+            'user_id',
+            'user_name'
         ],
     ]) ?>
 

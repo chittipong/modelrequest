@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\VehicledataSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Vehicledatas');
+$this->title = Yii::t('app', 'Request');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="request-index">
@@ -39,3 +39,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>
+<div class="form-group">
+    <?=Html::button('<i class="glyphicon glyphicon-minus"></i> ลบข้อมูล', ['class' => 'btn btn-danger', 'id' => 'btn-delete'])?>
+</div>
