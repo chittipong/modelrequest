@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 <?php Pjax::end(); ?></div>
+
 <div class="form-group">
-    <?=Html::button('<i class="glyphicon glyphicon-minus"></i> ลบข้อมูล', ['class' => 'btn btn-danger', 'id' => 'btn-delete'])?>
+    <?=Html::button('<i class="glyphicon glyphicon-plus"></i> Save Change', ['class' => 'btn btn-sucess', 'id' => 'btn-delete'])?>
 </div>
