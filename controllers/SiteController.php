@@ -46,7 +46,7 @@ class SiteController extends Controller
                     ],
                     [
                         //กำหนดสิทธิ์ User ที่สามารถเข้าดูข้อมูลได้ในหน้า index,view ได้เท่านั้น
-                        'actions' => ['view','update'],
+                        'actions' => ['index','view','update'],
                         'allow' => true,
                         'roles' => [
                             User::ROLE_USER,

@@ -6,18 +6,17 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use yii\helpers\ArrayHelper;
 
 $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-signup">
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="col-lg-8">
+<div class="panel panel-primary">
+<div class="panel-heading"><h3><?= Html::encode($this->title) ?></h3></div>
+<div class="panel-body">
 
-    <p>Please fill out the following fields to signup:</p>
-
-    <div class="row">
-        <div class="col-lg-5">
+    <div class="brand-form">
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
                 <?= $form->field($model, 'username') ?>
@@ -26,28 +25,21 @@ $this->params['breadcrumbs'][] = $this->title;
             
                 <?= $form->field($model, 'lname') ?>
 
+                <?= $form->field($model, 'tel') ?>
+        
                 <?= $form->field($model, 'email') ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
-            
-                <?php // $form->field($model, 'newPassword') ?>
-                <?php // $form->field($model, 'currentPassword') ?>
-                <?php // $form->field($model, 'newPasswordConfirm') ?>
-            
-            
-                
-                <?php
-                    $authItems= ArrayHelper::map($authItems,'name','name');
-                ?>
+                <?= $form->field($model, 'country') ?>
 
-                <?=$form->field($model,'permissions')->checkboxList($authItems); ?>
-            
-            
+                <?= $form->field($model, 'password')->passwordInput() ?>
+
                 <div class="form-group">
                     <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>
-        </div>
     </div>
+</div>
+</div>
+</div>
 </div>

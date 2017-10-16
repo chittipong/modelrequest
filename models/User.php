@@ -83,7 +83,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
    public function rules(){
         return [
-            [['fname','lname','tel','email','segment'],'string','max'=>100],
+            [['fname','lname','tel','email','segment','country'],'string','max'=>100],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
 
@@ -115,11 +115,19 @@ class User extends ActiveRecord implements IdentityInterface
             'password_reset_token' => Yii::t('app', 'Password Reset Token'),
             'email' => Yii::t('app', 'Email'),
             'tel' => Yii::t('app', 'Tel'),
+            'country' => Yii::t('app', 'country'),
             'status' => Yii::t('app', 'Status'),
             'roles' => Yii::t('app', 'Roles'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
         ];
+    }
+
+    public function scenarios(){
+        $scenarios=parent::scenarios();
+        $scenarios['signup']=['fname','lname','tel','email','country','segment','status','roles'];
+        $scenarios['update']=['fname','lname','tel','email','country','segment','status','roles'];
+        return $scenarios;
     }
 
     public function validateCurrentPassword(){
@@ -268,7 +276,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     //GET SEGMENT=============================
     public function getSegmentOptions(){
-       $list=['product' => 'Product', 'content' => 'Content', 'hr' => 'HR','admin'=>'Admin','staff'=>'Staff'];
+       $list=['product' => 'Product', 'content' => 'Content', 'rd'=>'R&D','hr' => 'HR','admin'=>'Admin','staff'=>'Staff'];
        return $list;
     }
 }

@@ -38,8 +38,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'password_reset_token',
             'email:email',
             'tel',
-            'status',
-            'roles',
+            'country',
+            //'status',
+            [
+                'label'=>'status',
+                'value'=>$model->getStatus(),       //เรียกฟังชั่นเพื่อแสดงเป็นชื่อ Status
+            ],
+            [
+                'label'=>'Roles',
+                'value'=>$model->getRoles(),        //เรียกฟังชั่นเพื่อแสดงเป็นชื่อ Roles
+            ],
+            //'roles',
             'created_at',
             'updated_at',
         ],

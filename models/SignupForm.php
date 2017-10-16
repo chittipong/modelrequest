@@ -16,6 +16,7 @@ class SignupForm extends Model
     public $email;
     public $password;
     public $tel;
+    public $country;
 
     /**
      * @inheritdoc
@@ -23,7 +24,7 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            [['fname','lname','tel'],'string','max'=>100],
+            [['fname','lname','tel','country'],'string','max'=>100],
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
             ['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This username has already been taken.'],
@@ -44,7 +45,8 @@ class SignupForm extends Model
         return[
           'fname'=>'Name',
           'lname'=>'Last Name',
-          'tel'=>'Tel'
+          'tel'=>'Tel',
+          'country'=>'Country'
         ];
     }
     /**
@@ -62,6 +64,7 @@ class SignupForm extends Model
             $user->lname=$this->lname;
             $user->email = $this->email;
             $user->tel = $this->tel;
+            $user->country = $this->country;
             $user->setPassword($this->password);
             $user->generateAuthKey();
             if ($user->save()) {

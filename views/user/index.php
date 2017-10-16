@@ -16,7 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create User'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?php // Html::a(Yii::t('app', 'Create User'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="glyphicon glyphicon-plus"></i> Create User', ['site/signup'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -29,13 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'fname',
             'lname',
             'segment',
+            'country',
             // 'auth_key',
             // 'password_hash',
             // 'password_reset_token',
-            // 'email:email',
-            // 'tel',
-            // 'status',
-            // 'roles',
+             'email:email',
+             'tel',
+             'status',
+             //'roles',
             // 'created_at',
             // 'updated_at',
 
